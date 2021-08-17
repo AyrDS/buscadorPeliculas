@@ -11,36 +11,44 @@
 </head>
 
 <body>
-    <main>
+    <main class="container pb-4">
         <h1>¡Movie time!</h1>
         <section>
-            <div>
-                <img src="img/movietime.jpg" alt="Movie time" class="movieTime">
+            <div class="row row-cols-1 row-cols-lg-2 align-items-center">
+                <div class="col">
+                    <img src="img/movietime.jpg" alt="Movie time" class="img-fluid">
+                </div>
+
+                <div class="col formularioBuscador">
+                    <h2>Buscador de películas</h2>
+                    <p>Puedes buscar por nombre y año la película que desees <span class="d-block">y te mostraremos información de la misma</span></p>
+                    <p class="fs-6"><span class="text-danger fs-4 fw-bold">*</span> obligatorio</p>
+
+                    <form id="formulario">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre de la película <span class="text-danger fs-4 fw-bold">*</span></label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Rocky, Rocky II, Titanic, etc">
+                            <div class="form-text">La aplicación funciona con el nombre de las películas en <span class="fw-bold">inglés</span></div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="year" class="form-label">Año de estreno</label>
+                            <input type="number" class="form-control" id="year">
+                        </div>
+                        <div class="d-grid gap-2 d-lg-block">
+                            <button type="submit" class="btnBuscar">Buscar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-
-            <div class="buscador">
-                <h2>Buscador de películas</h2>
-                <p>Puedes buscar por nombre y año la película que desees <span class="descripcion">y te mostraremos información de la misma</span></p>
-                <p><span class="obligatorio">*</span> obligatorio</p>
-                <form action="" id="formulario">
-                    <div class="inputs">
-                        <label for="nombre">Nombre de la pelicula <span class="obligatorio">*</span></label>
-                        <input type="text" id="nombre" name="nombre">
-                    </div>
-
-                    <div class="inputs">
-                        <label for="year">Año de estreno</label>
-                        <input type="number" id="year" name="year">
-                    </div>
-
-                    <button type="submit">Buscar</button>
-                </form>
-            </div>
+            <div id="contenedorBuscador"></div>
         </section>
     </main>
 
+    <footer class="container">
+        <p class="text-center fs-6">Hecho por AyrDS</p>
+    </footer>
 
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
 </body>
 
 </html>
