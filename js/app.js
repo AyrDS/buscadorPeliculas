@@ -20,7 +20,6 @@ function validarFormulario(e) {
         return;
     }
 
-    mostrarSpiner();
 
     consultarAPI(nombre, year);
 }
@@ -28,6 +27,7 @@ function validarFormulario(e) {
 async function consultarAPI(nombre, year) {
     const key = "b42adafc";
     const url = `http://www.omdbapi.com/?t=${nombre}&y=${year}&apikey=${key}&page=5`;
+    mostrarSpiner();
     try {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
