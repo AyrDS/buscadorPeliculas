@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Buscador de peliculas</title>
+</head>
+
+<body>
+    <main>
+        <h1>¡Movie time!</h1>
+        <section>
+            <div>
+                <img src="img/movietime.jpg" alt="Movie time" class="movieTime">
+            </div>
+
+            <div class="buscador">
+                <h2>Buscador de películas</h2>
+                <p>Puedes buscar por nombre y año la película que desees <span class="descripcion">y te mostraremos información de la misma</span></p>
+                <p><span class="obligatorio">*</span> obligatorio</p>
+                <form action="" id="formulario">
+                    <div class="inputs">
+                        <label for="nombre">Nombre de la pelicula <span class="obligatorio">*</span></label>
+                        <input type="text" id="nombre" name="nombre">
+                    </div>
+
+                    <div class="inputs">
+                        <label for="year">Año de estreno</label>
+                        <input type="number" id="year" name="year">
+                    </div>
+
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
