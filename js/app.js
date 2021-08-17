@@ -30,7 +30,6 @@ async function consultarAPI(nombre, year) {
     try {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
-        console.log(resultado)
         mostrarPelicula(resultado);
     } catch (error) {
         console.log(error);
@@ -63,7 +62,6 @@ function limpiarHTML() {
 
 function mostrarPelicula(pelicula) {
     limpiarHTML();
-    console.log(pelicula.Response)
     if (pelicula.Response === "True") {
         const { Title, Director, Genre, Poster, Runtime, Actors, Year, imdbRating } = pelicula;
 
