@@ -1,5 +1,9 @@
 const formulario = document.querySelector("#formulario");
-const contenedorBuscador = document.querySelector("#contenedorBuscador");
+const buscador = document.querySelector("#buscador");
+const resultadoContenedor = document.querySelector("#resultado");
+const template = document.querySelector("#template").content;
+const fragment = document.createDocumentFragment();
+
 
 document.addEventListener("DOMContentLoaded", () => {
     formulario.addEventListener("submit", validarFormulario)
@@ -16,12 +20,14 @@ function validarFormulario(e) {
         return;
     }
 
+    mostrarSpiner();
+
     consultarAPI(nombre, year);
 }
 
 async function consultarAPI(nombre, year) {
     const key = "b42adafc";
-    const url = `http://www.omdbapi.com/?t=${nombre}&y=${year}&apikey=${key}`;
+    const url = `http://www.omdbapi.com/?t=${nombre}&y=${year}&apikey=${key}&page=5`;
     try {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
@@ -38,10 +44,10 @@ function mostrarMensaje(mensaje) {
 
     if (!existeAlerta) {
         const divMensaje = document.createElement("div");
-        divMensaje.classList.add("alert", "alert-danger", "text-center", "mt-3", "mt-lg-0", "fw-bold", "error");
+        divMensaje.classList.add("alert", "alert-danger", "text-center", "mt-3", "fw-bold", "error");
         divMensaje.textContent = mensaje;
 
-        contenedorBuscador.appendChild(divMensaje);
+        buscador.appendChild(divMensaje);
 
         setTimeout(() => {
             divMensaje.remove();
@@ -50,19 +56,53 @@ function mostrarMensaje(mensaje) {
 }
 
 function limpiarHTML() {
-    while (contenedorBuscador.firstChild) {
-        contenedorBuscador.removeChild(contenedorBuscador.firstChild);
+    while (resultadoContenedor.firstChild) {
+        resultadoContenedor.removeChild(resultadoContenedor.firstChild);
     };
 }
 
 function mostrarPelicula(pelicula) {
     limpiarHTML();
+    console.log(pelicula.Response)
+    if (pelicula.Response === "True") {
+        const { Title, Director, Genre, Poster, Runtime, Actors, Year, imdbRating } = pelicula;
 
-    if (pelicula.Response) {
-        pelicula.forEach(peli => {
-            const { Title, Director, Genre, Poster, Released, Runtime, Actors, Year, imdbRating } = peli;
-        });
+        template.querySelector("img").src = Poster;
+        template.querySelector("h2").textContent = Title;
+        template.querySelector(".actores").textContent = Actors;
+        template.querySelector(".director").textContent = Director;
+        template.querySelector(".genero").textContent = Genre;
+        template.querySelector(".year").textContent = Year;
+        template.querySelector(".duracion").textContent = Runtime;
+        template.querySelector(".rating").textContent = imdbRating;
+
+        const clone = template.cloneNode(true);
+        fragment.appendChild(clone)
+        resultadoContenedor.appendChild(fragment)
     } else {
         mostrarMensaje("Película no encontrada");
     }
+}
+
+function mostrarSpiner() {
+    limpiarHTML();
+
+    const spinner = document.createElement("div")
+    spinner.classList.add("sk-fading-circle");
+
+    spinner.innerHTML += `
+        <div class="sk-circle1 sk-circle"></div>
+        <div class="sk-circle2 sk-circle"></div>
+        <div class="sk-circle3 sk-circle"></div>
+        <div class="sk-circle4 sk-circle"></div>
+        <div class="sk-circle5 sk-circle"></div>
+        <div class="sk-circle6 sk-circle"></div>
+        <div class="sk-circle7 sk-circle"></div>
+        <div class="sk-circle8 sk-circle"></div>
+        <div class="sk-circle9 sk-circle"></div>
+        <div class="sk-circle10 sk-circle"></div>
+        <div class="sk-circle11 sk-circle"></div>
+        <div class="sk-circle12 sk-circle"></div>
+    `;
+    resultadoContenedor.appendChild(spinner);
 }

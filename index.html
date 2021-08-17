@@ -13,7 +13,7 @@
 <body>
     <main class="container pb-4">
         <h1>¡Movie time!</h1>
-        <section>
+        <section id="buscador">
             <div class="row row-cols-1 row-cols-lg-2 align-items-center">
                 <div class="col">
                     <img src="img/movietime.jpg" alt="Movie time" class="img-fluid">
@@ -21,14 +21,18 @@
 
                 <div class="col formularioBuscador">
                     <h2>Buscador de películas</h2>
-                    <p>Puedes buscar por nombre y año la película que desees <span class="d-block">y te mostraremos información de la misma</span></p>
+                    <p>Puedes buscar por nombre y año la película que desees <span class="d-block">y te mostraremos
+                            información de la misma</span></p>
                     <p class="fs-6"><span class="text-danger fs-4 fw-bold">*</span> obligatorio</p>
 
                     <form id="formulario">
                         <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre de la película <span class="text-danger fs-4 fw-bold">*</span></label>
-                            <input type="text" class="form-control" id="nombre" placeholder="Rocky, Rocky II, Titanic, etc">
-                            <div class="form-text">La aplicación funciona con el nombre de las películas en <span class="fw-bold">inglés</span></div>
+                            <label for="nombre" class="form-label">Nombre de la película <span
+                                    class="text-danger fs-4 fw-bold">*</span></label>
+                            <input type="text" class="form-control" id="nombre"
+                                placeholder="Rocky, Rocky II, Titanic, etc">
+                            <p class="form-text">La aplicación funciona con el nombre de las películas en <span
+                                    class="fw-bold">su idioma original</span></p>
                         </div>
                         <div class="mb-3">
                             <label for="year" class="form-label">Año de estreno</label>
@@ -40,12 +44,27 @@
                     </form>
                 </div>
             </div>
-            <div id="contenedorBuscador"></div>
+        </section>
+        <section class="row row-cols-1 row-cols-lg-2 mt-3 mt-lg-0" id="resultado">
+            <template id="template">
+                <div class="col" class="poster">
+                    <img src="" alt="Poster película" id="imgPoster" class="float-lg-end mx-auto d-block d-lg-inline-block">
+                </div>
+                <div class="col">
+                    <h2 class="titulo text-center text-lg-start mt-3 mt-lg-0"></h2>
+                    <p class="fw-bold">Actores: <span class="actores fw-light"></span></p>
+                    <p class="fw-bold">Director: <span class="director fw-light"></span></p>
+                    <p class="fw-bold">Género: <span class="genero fw-light"></span></p>
+                    <p class="fw-bold">Año de estreno: <span class="year fw-light"></span></p>
+                    <p class="fw-bold">Duración: <span class="duracion fw-light"></span></p>
+                    <p class="fw-bold">Puntuación IMDb: <span class="rating fw-light"></span></p>
+                </div>
+            </template>
         </section>
     </main>
 
     <footer class="container">
-        <p class="text-center fs-6">Hecho por AyrDS</p>
+        <p class="text-center fs-6">Hecho por <a href="https://www.linkedin.com/in/ayrds/" rel="noopener noreferrer" target="_blank">AyrDS</a></p>
     </footer>
 
     <script src="js/app.js"></script>
