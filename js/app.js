@@ -20,14 +20,13 @@ function validarFormulario(e) {
         return;
     }
 
-
+    mostrarSpiner();
     consultarAPI(nombre, year);
 }
 
 async function consultarAPI(nombre, year) {
     const key = "b42adafc";
     const url = `http://www.omdbapi.com/?t=${nombre}&y=${year}&apikey=${key}&page=5`;
-    mostrarSpiner();
     try {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
@@ -40,6 +39,7 @@ async function consultarAPI(nombre, year) {
 }
 
 function mostrarMensaje(mensaje) {
+    limpiarHTML();
     const existeAlerta = document.querySelector(".error");
 
     if (!existeAlerta) {
