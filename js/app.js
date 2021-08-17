@@ -26,7 +26,7 @@ function validarFormulario(e) {
 
 async function consultarAPI(nombre, year) {
     const key = "b42adafc";
-    const url = `http://www.omdbapi.com/?t=${nombre}&y=${year}&apikey=${key}`;
+    const url = `https://www.omdbapi.com/?t=${nombre}&y=${year}&apikey=${key}`;
     try {
         const respuesta = await fetch(url);
         const resultado = await respuesta.json();
